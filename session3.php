@@ -1,4 +1,7 @@
 <?php
+
+
+
 // Task .... 
 // input a     c
 // output b    d 
@@ -183,6 +186,24 @@
  */
 
 
+# Clean Function ..... 
+function Clean($input)
+{
+
+    $input = trim($input);
+    $input = strip_tags($input);
+    $input = stripslashes($input);   //   /   \ 
+
+    return $input;
+
+    //  return   trim(strip_tags(stripslashes($input)));
+
+}
+
+
+
+
+
   if($_SERVER['REQUEST_METHOD'] == "POST"){
 
     // CODE .... 
@@ -230,7 +251,7 @@
         }
 
      }else{
-         echo 'Valid Data';
+         echo $name; 
      } 
   
 
@@ -269,7 +290,7 @@
 
             <div class="form-group">
                 <label for="exampleInputName">Name</label>
-                <input type="text" class="form-control"   name="name"  id="exampleInputName" aria-describedby="" placeholder="Enter Name">
+                <input type="text" class="form-control"   name="name"    id="exampleInputName" aria-describedby="" placeholder="Enter Name">
             </div>  
 
 
@@ -285,7 +306,7 @@
 
             <div class="form-group">
                 <label for="exampleInputName">Age</label>
-                <input type="text" class="form-control"   name="age"  id="exampleInputName" aria-describedby="" placeholder="Enter age">
+                <input type="number" class="form-control"   name="age"  id="exampleInputName" aria-describedby="" placeholder="Enter age">
             </div>
 
 

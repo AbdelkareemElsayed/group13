@@ -3,16 +3,14 @@
 
 //  echo 'php course';
 
-
-
 //  echo 'js course';
-
 
 //  $age = 7; 
 
- 
+
 //  if($age >= 20 ){
-//    //  code .....
+
+  //    //  code .....
    
 //    echo 'Age >= 20';
 
@@ -267,7 +265,9 @@
 //  test();  //      2 
 
 
+//%22%3E%3Cscript%3Ealert('hacked')%3C/script%3E
 
+// "https://www.w3schoo��ls.co�m";
 ?>
 
 
