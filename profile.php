@@ -17,9 +17,14 @@
     
       <h3>Student Data.... </h3>
 
-      Name  : <?php   echo $_SESSION['name'];   ?>  <br>
-      Email : <?php   echo $_SESSION['email'];   ?>  <br>
-      Age   : <?php   echo $_SESSION['age'];   ?>
+
+      <?php 
+      
+          if(isset($_COOKIE['studentName'])){
+              echo 'Name : '.$_COOKIE['studentName'];
+          }
+      
+      ?>
 
 
 </body>

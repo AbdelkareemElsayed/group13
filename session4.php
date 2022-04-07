@@ -1,6 +1,6 @@
 <?php
 
-  session_start(); 
+//   session_start(); 
 
 // code ..... 
 
@@ -8,7 +8,6 @@
 // test@.com 
 //  exit; 
 //   https://www.linkedin.com/
-
 
 ########################################################################################
 
@@ -165,12 +164,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             echo '* ' . $key . ' : ' . $value . '<br>';
         }
     } else {
-       
-        $_SESSION['name']   = $name; 
-        $_SESSION['email']  = $email; 
-        $_SESSION['age']    = $age; 
 
 
+
+        $studentData = $name . '|||' . $email . '|||' . $password . '|||' . $age . "\n";
+
+
+        $file =   fopen('info.txt', 'a')  or die("can't open file");
+        fwrite($file, $studentData);
+        fclose($file);
+
+
+        // $_SESSION['name']   = $name; 
+        // $_SESSION['email']  = $email; 
+        // $_SESSION['age']    = $age; 
+
+        //   setcookie('studentName',$name,time()+86400,'/'); 
 
     }
 }
