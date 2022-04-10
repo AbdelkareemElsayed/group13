@@ -186,31 +186,21 @@
  */
 
 
-# Clean Function ..... 
-function Clean($input)
-{
 
-    $input = trim($input);
-    $input = strip_tags($input);
-    $input = stripslashes($input);   //   /   \ 
-
-    return $input;
-
-    //  return   trim(strip_tags(stripslashes($input)));
-
-}
-
-
+//  include('functions.php');
+require 'functions.php';
 
 
 
   if($_SERVER['REQUEST_METHOD'] == "POST"){
 
+
     // CODE .... 
-   $name     = $_POST['name'];
-   $email    = $_POST['email'];
-   $password = $_REQUEST['password'];
-   $age      = (int)$_POST['age'];
+    $name     = Clean($_POST['name']);
+    $email    = Clean($_POST['email']);
+    $password = Clean($_REQUEST['password']);
+    $age      = (int)Clean($_POST['age']);
+
 
 
   $errors = []; 

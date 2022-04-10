@@ -85,32 +85,7 @@
 // }
 
 
-
- 
-
-
-
-
-
-# Clean Function ..... 
-function Clean($input)
-{
-
-    $input = trim($input);
-    $input = strip_tags($input);
-    $input = stripslashes($input);   //   /   \ 
-
-    return $input;
-
-    //  return   trim(strip_tags(stripslashes($input)));
-
-}
-
-
-
-
-
-
+include('functions.php');
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 

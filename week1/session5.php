@@ -66,14 +66,11 @@
     //     echo   json_encode($data);
 
 
-     $data =   file_get_contents("https://tools.learningcontainer.com/sample-json-file.json"); 
+    //  $data =   file_get_contents("https://tools.learningcontainer.com/sample-json-file.json"); 
 
-     $dataArr =  json_decode($data,true);
+    //  $dataArr =  json_decode($data,true);
 
-  
-
-
-     echo($dataArr['Name']); 
+    //  echo($dataArr['Name']); 
 
 
 
