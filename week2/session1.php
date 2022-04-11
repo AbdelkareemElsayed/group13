@@ -96,11 +96,24 @@
   # User Table     
 
   /*
-          Name     Email     Password
-          x        x@x.com    123 
-          y        y@y.com    456   
-
+  id       Name     Email     Password      
+   1       x        x@x.com    123 
+   2       y        y@y.com    456    
    */
+
+
+
+
+
+
+   /* 
+   C  R  U  D 
+   C   >> CREATE 
+   R   >> READ
+   U   >> UPDATE 
+   D   >> DELETE 
+   */ 
+
 
 
 ?>
