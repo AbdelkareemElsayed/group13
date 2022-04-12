@@ -4,6 +4,7 @@
 // delete raw from db  ..... 
 
 require '../helpers/dbConnection.php';
+require 'checklogin.php';
 
 $id = $_GET['id'];
 

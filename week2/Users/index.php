@@ -2,6 +2,7 @@
 
 
   require '../helpers/dbConnection.php';
+  require 'checklogin.php';
 
   $sql = "select * from users"; 
   $data = mysqli_query($con,$sql);  
@@ -50,6 +51,12 @@
         <div class="page-header">
             <h1>Read Users </h1>
             <br>
+              <?php    
+                
+                 echo 'Welcome ,'.$_SESSION['user']['name'];
+              
+              ?>
+            <br>
 
             <?php
             
@@ -65,7 +72,7 @@
 
         </div>
 
-        <a href="">+ Account</a>
+        <a href="create.php">+ Account</a>   ||    <a href="logout.php">LogOut</a>
 
         <table class='table table-hover table-responsive table-bordered'>
             <!-- creating our table heading -->
@@ -73,7 +80,7 @@
                 <th>ID</th>
                 <th>Name</th>
                 <th>Email</th>
-
+                 <th>Image</th>
                 <th>action</th>
             </tr>
 
@@ -87,6 +94,7 @@
                    <td><?php echo $raw['id'];?></td>
                    <td><?php echo $raw['name'];?></td>
                    <td><?php echo $raw['email'];?></td>
+                   <td> <img src="uploads/<?php echo $raw['image'];?>" alt="userImage"  height="50px" width="50px" > </td>
 
                 <td>
                     <a href='delete.php?id=<?php echo $raw['id'];?>' class='btn btn-danger m-r-1em'>Delete</a>

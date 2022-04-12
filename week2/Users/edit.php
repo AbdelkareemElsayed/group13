@@ -2,6 +2,7 @@
 
 require '../helpers/dbConnection.php';
 require '../helpers/functions.php';
+require 'checklogin.php';
 # Fetch Id Data .... 
 
 $id = $_GET['id'];
@@ -9,11 +10,6 @@ $id = $_GET['id'];
 $sql = "select * from users where id = $id";
 $op  = mysqli_query($con, $sql);
 $data = mysqli_fetch_assoc($op);
-
-
-
-
-
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {

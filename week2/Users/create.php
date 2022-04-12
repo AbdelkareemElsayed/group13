@@ -36,6 +36,23 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $errors['Password'] = "Length Must be >= 6 chars";
     }
 
+    # Validate Image 
+    if (empty($_FILES['image']['name'])) {
+        $errors['Image'] = "Field Required";
+    } else {
+
+        $typesInfo  =  explode('/', $_FILES['image']['type']);   // convert string to array ... 
+        $extension  =  strtolower(end($typesInfo));      // get last element in array .... 
+
+        $allowedExtension = ['png', 'jpeg', 'jpg'];   // allowed Extension    // PNG JPG 
+
+        if (!in_array($extension, $allowedExtension)) {
+
+            $errors['Image'] = "Invalid Extension";
+        }
+    }
+
+
 
     # Check ...... 
     if (count($errors) > 0) {
@@ -48,25 +65,37 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         }
     } else {
 
-         # DB OP ......... 
+        # DB OP ......... 
 
-          $password = md5($password);
+        # Create Final Name ... 
+        $FinalName = uniqid() . '.' . $extension;
 
-         $sql = "insert into users (name,email,password) values ('$name','$email','$password')";
+        $disPath = 'uploads/' . $FinalName;
 
-        $op =  mysqli_query($con,$sql);
+        $temPath = $_FILES['image']['tmp_name'];
 
-         if($op){
-             echo 'Raw Inserted';
-         }else{
-             echo 'Error Try Again '. mysqli_error($con);
-         }
+        if (move_uploaded_file($temPath, $disPath)) {
 
 
-     # Close Connection .... 
-      mysqli_close($con); 
 
 
+            $password = md5($password);
+
+            $sql = "insert into users (name,email,password,image) values ('$name','$email','$password','$FinalName')";
+
+            $op =  mysqli_query($con, $sql);
+
+            if ($op) {
+                echo 'Raw Inserted';
+            } else {
+                echo 'Error Try Again ' . mysqli_error($con);
+            }
+        } else {
+            echo 'Error In Uploading Image Try Again';
+        }
+
+        # Close Connection .... 
+        mysqli_close($con);
     }
 }
 
@@ -87,34 +116,37 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 <body>
 
-<div class="container">
-    <h2>Register</h2>
+    <div class="container">
+        <h2>Register</h2>
 
-    <form action="<?php echo   htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post">
+        <form action="<?php echo   htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
 
-        <div class="form-group">
-            <label for="exampleInputName">Name</label>
-            <input type="text" class="form-control" required id="exampleInputName" aria-describedby="" name="name"
-                   placeholder="Enter Name">
-        </div>
-
-
-        <div class="form-group">
-            <label for="exampleInputEmail">Email address</label>
-            <input type="email" class="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp"
-                   name="email" placeholder="Enter email">
-        </div>
-
-        <div class="form-group">
-            <label for="exampleInputPassword">New Password</label>
-            <input type="password" class="form-control" required id="exampleInputPassword1" name="password"
-                   placeholder="Password">
-        </div>
+            <div class="form-group">
+                <label for="exampleInputName">Name</label>
+                <input type="text" class="form-control" required id="exampleInputName" aria-describedby="" name="name" placeholder="Enter Name">
+            </div>
 
 
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-</div>
+            <div class="form-group">
+                <label for="exampleInputEmail">Email address</label>
+                <input type="email" class="form-control" required id="exampleInputEmail1" aria-describedby="emailHelp" name="email" placeholder="Enter email">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputPassword">New Password</label>
+                <input type="password" class="form-control" required id="exampleInputPassword1" name="password" placeholder="Password">
+            </div>
+
+            <div class="form-group">
+                <label for="exampleInputName">Image</label>
+                <input type="file" name="image">
+            </div>
+
+
+
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
 
 
 </body>
