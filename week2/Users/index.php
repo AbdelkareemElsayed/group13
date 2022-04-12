@@ -4,7 +4,7 @@
   require '../helpers/dbConnection.php';
   require 'checklogin.php';
 
-  $sql = "select * from users"; 
+  $sql = "select * from users  "; 
   $data = mysqli_query($con,$sql);  
 
 

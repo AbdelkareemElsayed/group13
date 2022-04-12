@@ -10,10 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $password = Clean($_POST['password']);
     $email    = Clean($_POST['email']);
 
-
     # Validate ...... 
-
     $errors = [];
+
 
     # validate name .... 
     if (empty($name)) {

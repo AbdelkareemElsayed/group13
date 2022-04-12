@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $temPath = $_FILES['image']['tmp_name'];
         $size    = $_FILES['image']['size'];
         $type    = $_FILES['image']['type'];
-        // image/png 
+        // image/png  
 
         $typesInfo  =  explode('/', $type);   // convert string to array ... 
         $extension  =  strtolower( end($typesInfo));      // get last element in array .... 
