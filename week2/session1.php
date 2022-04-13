@@ -114,6 +114,21 @@
    D   >> DELETE 
    */ 
 
+/*
 
+   # Task .... 
+Hospital management system that have 3 main types of users 1-admins 2-doctors 3-Patients.
+With the following data.
+Admins   (name, email, password ) ,    
+Patients (name, email, password)  ,
+Doctors  (name, email, password   , specialize(text) , gender).....
+
+
+Doctors have appointments(day , from , to) and
+Patients can reserve these appointments.
+Note : doctor can accept or refuse reservations.
+Requirments : create a database structure.
+
+*/
 
 ?>
