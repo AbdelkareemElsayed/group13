@@ -6,17 +6,26 @@ require 'checklogin.php';
 # Fetch Id Data .... 
 
 $id = $_GET['id'];
-
+#############################################################################################################
+# FETCH RAW DATA ..... 
 $sql = "select * from users where id = $id";
 $op  = mysqli_query($con, $sql);
 $data = mysqli_fetch_assoc($op);
+#############################################################################################################
+# Fetch dep data ..... 
+$sql = "select * from departments"; 
+$dep_op = mysqli_query($con,$sql);
+#############################################################################################################
+
+
+
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $name     = Clean($_POST['name']);
     $email    = Clean($_POST['email']);
-
+    $dep_id   = Clean($_POST['dep_id']);
 
     # Validate ...... 
 
@@ -34,6 +43,16 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $errors['Email'] = "Invalid Email";
     }
+
+
+        # Validate Dep id 
+        if (empty($dep_id)) {
+            $errors['Department'] = "Field Required";
+        } elseif (!filter_var($dep_id, FILTER_VALIDATE_INT)) {
+            $errors['Department'] = "Invalid Dep id Format";
+        }
+
+        
 
 
       # Validate Image 
@@ -88,7 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     }
 
 
-        $sql = "update users set name='$name' , email = '$email' , image = '$FinalName' where  id = $id";
+        $sql = "update users set name='$name' , email = '$email' , image = '$FinalName' , dep_id = $dep_id where  id = $id";
 
         $op =  mysqli_query($con, $sql);
 
@@ -147,6 +166,18 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <input type="password" class="form-control" required id="exampleInputPassword1" name="password"
                    placeholder="Password">
         </div> -->
+
+        <div class="form-group">
+                <label for="exampleInputPassword">Department</label>
+                <select class="form-control" name="dep_id" >
+                 <?php 
+                    while($raw = mysqli_fetch_assoc($dep_op)){
+                ?>      
+                <option value="<?php echo $raw['id'];?>"   <?php if($data['dep_id'] == $raw['id']) { echo 'selected';}?> ><?php echo $raw['title'];?></option>    
+               <?php } ?>
+            </select>   
+            </div>
+
 
 
            <div class="form-group">

@@ -192,4 +192,18 @@ id      pat_id    doc_app_id      date       status
 // 1     2           3
 // 2     4           2
 
+
+
+
+/*
+
+ ** Task ** 
+A simple todo list application that takes tasks submitted by user in a form and save it in a MySQL database.
+ tasks  also retrieved from the database and displayed on the web page with a delete button beside each task.
+  When the delete button is clicked, the task is deleted from the database.
+Note .
+1- Task details {title,content,start date,end date} 
+2- user can’t delete task if enddate is expired.
+3-Each user must have an account to be able to work through App & can view only his tasks .
+*/
 ?>

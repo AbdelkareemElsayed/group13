@@ -3,12 +3,20 @@
 require '../helpers/dbConnection.php';
 require '../helpers/functions.php';
 
+#############################################################################################################
+# Fetch dep data ..... 
+$sql = "select * from departments"; 
+$dep_op = mysqli_query($con,$sql);
+#############################################################################################################
+
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
     $name     = Clean($_POST['name']);
     $password = Clean($_POST['password']);
     $email    = Clean($_POST['email']);
+    $dep_id   = Clean($_POST['dep_id']);            //filter_var(Clean($_POST['dep_id']),FILTER_SANITIZE_NUMBER_INT); 
 
     # Validate ...... 
     $errors = [];
@@ -33,6 +41,13 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $errors['password'] = "Field Required";
     } elseif (strlen($password) < 6) {
         $errors['Password'] = "Length Must be >= 6 chars";
+    }
+
+    # Validate Dep id 
+    if (empty($dep_id)) {
+        $errors['Department'] = "Field Required";
+    } elseif (!filter_var($dep_id, FILTER_VALIDATE_INT)) {
+        $errors['Department'] = "Invalid Dep id Format";
     }
 
     # Validate Image 
@@ -80,7 +95,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
             $password = md5($password);
 
-            $sql = "insert into users (name,email,password,image) values ('$name','$email','$password','$FinalName')";
+            $sql = "insert into users (name,email,password,image,dep_id) values ('$name','$email','$password','$FinalName',$dep_id)";
 
             $op =  mysqli_query($con, $sql);
 
@@ -135,6 +150,20 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <label for="exampleInputPassword">New Password</label>
                 <input type="password" class="form-control" required id="exampleInputPassword1" name="password" placeholder="Password">
             </div>
+
+
+
+            <div class="form-group">
+                <label for="exampleInputPassword">Department</label>
+                <select class="form-control" name="dep_id" >
+                 <?php 
+                    while($raw = mysqli_fetch_assoc($dep_op)){
+                ?>      
+                <option value="<?php echo $raw['id'];?>"><?php echo $raw['title'];?></option>    
+               <?php } ?>
+            </select>   
+            </div>
+
 
             <div class="form-group">
                 <label for="exampleInputName">Image</label>

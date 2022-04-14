@@ -4,7 +4,7 @@
 # Create DB CONNECTION ...... 
 
 $server = "localhost";    // 127.0.0.1 
-$dbName = "group13"; 
+$dbName = "test"; 
 $dbUser = "root"; 
 $dbPassword = "";
 

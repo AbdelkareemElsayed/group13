@@ -4,7 +4,7 @@
   require '../helpers/dbConnection.php';
   require 'checklogin.php';
 
-  $sql = "select * from users  "; 
+  $sql = "select users.* , departments.title   from users  join departments on users.dep_id = departments.id "; 
   $data = mysqli_query($con,$sql);  
 
 
@@ -81,6 +81,7 @@
                 <th>Name</th>
                 <th>Email</th>
                  <th>Image</th>
+                 <th>Department</th>
                 <th>action</th>
             </tr>
 
@@ -94,10 +95,17 @@
                    <td><?php echo $raw['id'];?></td>
                    <td><?php echo $raw['name'];?></td>
                    <td><?php echo $raw['email'];?></td>
-                   <td> <img src="uploads/<?php echo $raw['image'];?>" alt="userImage"  height="50px" width="50px" > </td>
-
+                   <td> <img src="uploads/<?php echo $raw['image'];?>" alt="userImage"  height="50px" width="50px" > </td>  
+                   <td><?php echo $raw['title'];?></td>
                 <td>
-                    <a href='delete.php?id=<?php echo $raw['id'];?>' class='btn btn-danger m-r-1em'>Delete</a>
+                    
+              <?php 
+                if($_SESSION['user']['id'] != $raw['id'] ){
+              ?> 
+                <a href='delete.php?id=<?php echo $raw['id'];?>' class='btn btn-danger m-r-1em'>Delete</a>
+
+              <?php } ?>
+
                     <a href='edit.php?id=<?php echo $raw['id'];?>' class='btn btn-primary m-r-1em'>Edit</a>
                 </td>
             </tr>

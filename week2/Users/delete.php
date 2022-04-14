@@ -8,6 +8,10 @@ require 'checklogin.php';
 
 $id = $_GET['id'];
 
+
+if($_SESSION['user']['id'] != $id){
+
+
 if(filter_var($id,FILTER_VALIDATE_INT)){
 // code .... 
 # Select Image .... 
@@ -36,7 +40,9 @@ if($op){
 }
 
 
-
+}else{
+    $message = "Can't do This Action .. ";
+}
  # Set Message to Session
  
  $_SESSION['Message'] = $message; 
