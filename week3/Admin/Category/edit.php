@@ -5,7 +5,7 @@ require '../helpers/functions.php';
 
 $id = $_GET['id'];
 # Fetch Raw Data .... 
-$sql = "select * from roles where id = $id";
+$sql = "select * from category where id = $id";
 $op  = doQuery($sql);
 
 if (mysqli_num_rows($op) == 0) {
@@ -46,7 +46,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     } else {
 
         # DB CODE ..... 
-        $sql = "update  roles  set title = '$title' where id = $id";
+        $sql = "update  category  set title = '$title' where id = $id";
         $op  = doQuery($sql);
 
         if ($op) {
@@ -83,7 +83,7 @@ require '../layouts/sidNav.php';
 
             <?php
             # Print Messages .... 
-            Messages('Dashboard / Roles / Edit');
+            Messages('Dashboard / Category / Edit');
             ?>
 
 

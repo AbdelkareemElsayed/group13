@@ -3,25 +3,6 @@
 require '../helpers/db.php';
 require '../helpers/functions.php';
 
-$id = $_GET['id'];
-# Fetch Raw Data .... 
-$sql = "select * from roles where id = $id";
-$op  = doQuery($sql);
-
-if (mysqli_num_rows($op) == 0) {
-    $message = ["Error" => 'Invalid Id'];
-    $_SESSION['Message'] = $message;
-    header("Location: index.php");
-    exit;
-} else {
-    $Raw = mysqli_fetch_assoc($op);
-}
-########################################################################################################
-
-
-
-
-
 
 // LOGIC .... 
 
@@ -46,18 +27,12 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     } else {
 
         # DB CODE ..... 
-        $sql = "update  roles  set title = '$title' where id = $id";
+
+        $sql = "insert into category (title) values ('$title')";
         $op  = doQuery($sql);
 
         if ($op) {
-            $message = ["success" => "Raw Updated"];
-           
-            $_SESSION['Message'] = $message;
-           
-            header("Location: index.php");
-
-            exit;
-
+            $message = ["success" => "Raw Inserted"];
         } else {
             $message = ["Error" => "Try Again"];
         }
@@ -83,18 +58,18 @@ require '../layouts/sidNav.php';
 
             <?php
             # Print Messages .... 
-            Messages('Dashboard / Roles / Edit');
+            Messages('Dashboard / Category / Create');
             ?>
 
 
         </ol>
 
 
-        <form action="edit.php?id=<?php  echo $Raw['id'];?>" method="post" enctype="multipart/form-data">
+        <form action="<?php echo   htmlspecialchars($_SERVER['PHP_SELF']); ?>" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label for="exampleInputName">Title</label>
-                <input type="text" class="form-control" required id="exampleInputName" aria-describedby="" name="title" value="<?php echo $Raw['title'];?>" placeholder="Enter Title">
+                <input type="text" class="form-control" required id="exampleInputName" aria-describedby="" name="title" placeholder="Enter Title">
             </div>
 
 
@@ -111,6 +86,3 @@ require '../layouts/sidNav.php';
 
 require '../layouts/footer.php';
 ?>
-
-
-	
