@@ -42,7 +42,43 @@ function validate($input, $flag,$length = 6)
             if (strlen($input) < $length) {
                 $status = false;
             }
+            break;
+
+
+        case 'phone':
+            # code ... 
+            if (!preg_match('/^01[0-2,5][0-9]{8}$/', $input)) {
+                $status = false;
+            }
+            break;
+
+
+
+        case 'image':
+            # Case 
+
+            $typesInfo  =  explode('/', $input['image']['type']);   // convert string to array ... 
+            $extension  =  strtolower(end($typesInfo));      // get last element in array .... 
+
+            $allowedExtension = ['png', 'jpeg', 'jpg'];   // allowed Extension    // PNG JPG 
+
+            if (!in_array($extension, $allowedExtension)) {
+
+                $status = false;
+            }
+
             break; 
+
+
+
+          /*
+             01  0 - 8 
+             01  1 - 8 
+             01  2 - 8 
+             01  5 - 8
+          */
+
+
 
     }
 
@@ -51,7 +87,7 @@ function validate($input, $flag,$length = 6)
 
 
 
-
+   
 
 
 function Messages($text)
@@ -68,6 +104,20 @@ function Messages($text)
 }
 
 
+
+
+
+
+function removeFile($file){
+   
+    if(unlink('uploads/'.$file)){
+        $status = true;
+    } else{
+        $status = false; 
+    }
+
+    return $status;
+}
 
 ############################################################################################################### 
 

@@ -161,7 +161,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 ?>      
                 <option value="<?php echo $raw['id'];?>"><?php echo $raw['title'];?></option>    
                <?php } ?>
-            </select>   
+            </select>       
             </div>
 
 
