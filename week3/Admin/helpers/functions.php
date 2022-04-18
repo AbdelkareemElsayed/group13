@@ -71,6 +71,23 @@ function validate($input, $flag,$length = 6)
 
 
 
+          case 'date': 
+                    
+            $date = explode('-',$input); 
+             
+            if(!checkdate( $date[1],$date[2],$date[0])){
+               $status = false; 
+            }
+            
+            break;   
+
+
+            case 'DateNext': 
+                    if(time() > strtotime($input)){
+                       $status = false;    
+                    }
+                break;
+
           /*
              01  0 - 8 
              01  1 - 8 
@@ -90,7 +107,7 @@ function validate($input, $flag,$length = 6)
    
 
 
-function Messages($text)
+function Messages($text = null )
 {
     if (isset($_SESSION['Message'])) {
         foreach ($_SESSION['Message'] as $key => $value) {
@@ -117,6 +134,13 @@ function removeFile($file){
     }
 
     return $status;
+}
+
+
+
+function url($input){
+
+    return 'http://'.$_SERVER['HTTP_HOST'].'/group13/week3/Admin/'.$input; 
 }
 
 ############################################################################################################### 
