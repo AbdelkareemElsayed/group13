@@ -1,0 +1,9 @@
+<?php 
+
+     if($_SESSION['user']['role_id'] != 2){
+
+        header("location: ".url('')); 
+     }
+
+
+?>

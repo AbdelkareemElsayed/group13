@@ -14,11 +14,18 @@
                            
                             <?php 
                             
-                               $modules = ["Roles", "Users" ,"Category","blogs"];
-                            
-                            
 
-                                foreach ($modules as $key => $value) {
+                              if($_SESSION['user']['role_id'] == 2){
+
+                               $modules = ["Roles", "Users" ,"Category","blogs"];
+
+                              }elseif($_SESSION['user']['role_id'] == 5){
+                               
+                                $modules = ['blogs'];
+                              
+                            }
+                              
+                              foreach ($modules as $key => $value) {
                                     # code..
 
                             ?>

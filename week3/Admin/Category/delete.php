@@ -2,6 +2,8 @@
 ########################################################################################################
 require '../helpers/db.php';
 require '../helpers/functions.php';
+require '../helpers/checklogin.php';
+require '../helpers/checkAdmin.php';
 
 # Fetch Id .... 
 $id = $_GET['id']; 

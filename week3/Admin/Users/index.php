@@ -3,6 +3,8 @@
 ########################################################################################################
 require '../helpers/db.php';
 require '../helpers/functions.php';
+require '../helpers/checklogin.php';
+require '../helpers/checkAdmin.php';
 
 # Fetch Data 
 $sql = "select users.* , roles.title from users inner join roles on users.role_id = roles.id";
