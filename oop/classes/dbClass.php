@@ -1,9 +1,11 @@
 <?php 
 
+session_start();
+
 class  db{
 
    var $server     = "localhost"; 
-   var $dbName     = "projectg13";
+   var $dbName     = "ooptask";
    var $dbUser     = "root"; 
    var $dbPassword = "";  
    var $con ;  
@@ -39,14 +41,14 @@ class  db{
 
 
 
-$obj = new db;
+// $obj = new db;
 
-$sql = "insert into category (title) values ('cs')";
+// $sql = "insert into category (title) values ('cs')";
 
-$op = $obj -> doQuery($sql); 
+// $op = $obj -> doQuery($sql); 
 
-if($op){
-    echo 'Raw Inserted';
-}else{
-    echo 'Error Try again';
-}
+// if($op){
+//     echo 'Raw Inserted';
+// }else{
+//     echo 'Error Try again';
+// }

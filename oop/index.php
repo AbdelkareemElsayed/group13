@@ -115,102 +115,102 @@
 
 
 # Parent class || super class 
- class user {
+//  class user {
 
-    public $name = "account"; 
-    private $email = "test@yahoo" ; 
-    protected $password = "tech123"; 
-
-
-
-    public function setEmail($email){
-        $this->email = $email;
-    }
-
-
-    public function getEmail(){
-       return $this->email ;
-    }
-
-
-   final  function login()
-    {
-
-        // email && password 
-        echo 'Login Method .... ';
-    }
+//     public $name = "account"; 
+//     private $email = "test@yahoo" ; 
+//     protected $password = "tech123"; 
 
 
 
-   public function Register(){
-        echo 'Register Method ..... ';
-
-    }
-}
+//     public function setEmail($email){
+//         $this->email = $email;
+//     }
 
 
-############################################################################## 
+//     public function getEmail(){
+//        return $this->email ;
+//     }
 
-// $user = new user(); 
-// // $user->email = "testaccount@yahoo.com"; 
-// // echo $user->email;
 
-// // $user->setEmail("test@yahoo");
-// // echo $user->getEmail();
+//    final  function login()
+//     {
 
-// $user->password = "1213";
-// echo $user->password;
-// exit(); 
+//         // email && password 
+//         echo 'Login Method .... ';
+//     }
 
 
 
-# sub class , child class , derived class 
- class admin extends  user {
+//    public function Register(){
+//         echo 'Register Method ..... ';
 
-//     use Messages; 
-
-    // function login()
-    // {
-    //     // email && password 
-    //     echo 'Login Method   Admin .... '.$this->password;
-    // }
+//     }
+// }
 
 
-    function AcceptStudent(){
+// ############################################################################## 
 
-    }
+// // $user = new user(); 
+// // // $user->email = "testaccount@yahoo.com"; 
+// // // echo $user->email;
+
+// // // $user->setEmail("test@yahoo");
+// // // echo $user->getEmail();
+
+// // $user->password = "1213";
+// // echo $user->password;
+// // exit(); 
 
 
-}
+
+// # sub class , child class , derived class 
+//  class admin extends  user {
+
+// //     use Messages; 
+
+//     // function login()
+//     // {
+//     //     // email && password 
+//     //     echo 'Login Method   Admin .... '.$this->password;
+//     // }
 
 
-class student extends user {
+//     function AcceptStudent(){
+
+//     }
 
 
-    var $level; 
+// }
 
 
-    function JoinCours(){
+// class student extends user {
+
+
+//     var $level; 
+
+
+//     function JoinCours(){
         
-    }
+//     }
 
 
-}
+// }
 
 
 
-$admin = new admin; 
+// $admin = new admin; 
 
-// // $admin->name = "admin account"; 
-// // echo $admin->name;
-$admin->login();
+// // // $admin->name = "admin account"; 
+// // // echo $admin->name;
+// $admin->login();
 
-// // $admin->sendSMS();
+// // // $admin->sendSMS();
 
-// echo '<br>';
+// // echo '<br>';
 
-// $std = new student; 
-// $std -> login();
+// // $std = new student; 
+// // $std -> login();
 
 
 
@@ -229,8 +229,101 @@ $admin->login();
 
 //   var_dump($obj);
 
+################################################################################################################## 
+
+
+// function message();    // header 
+
+// class x{
+
+//     function message();
+// }
 
 
 
+// interface ntoify{
+   
+//     function sendSms();
+//     function sendEmail();
+// }
+
+
+// interface xx{
+//      function x(); 
+// }
+
+// class user implements ntoify , xx {
+
+ 
+//     function x(){
+
+//     }
+
+//     function sendSms(){
+//         // code .... 
+//     }
+
+
+//     function sendEmail(){
+//         // code.... 
+//     }
+
+// }
+
+
+// abstract class x{
+//     private $name = "Root"; 
+
+
+//     function  getName(){
+//         return $this->name;
+//     }
+
+
+//    abstract function sendMessage();
+// }
+
+
+
+
+// class y  extends x {
+
+//     function sendMessage(){}
+// }
+
+
+
+// class user{
+
+//     private static $name = "root"; 
+
+//     static function getName(){
+
+//      return   self :: $name;
+//     }
+
+
+//    static function login(){
+//         echo 'Login';
+//     }
+
+
+//    static function register(){
+//         echo 'Register';
+//     }
+
+
+
+// }
+
+
+// $obj = new user; 
+// $obj->login(); 
+
+// user :: login();
+ 
+//   echo  user :: $name;
+
+echo user :: getName();
 
 ?>

@@ -107,14 +107,14 @@ function validate($input, $flag,$length = 6)
 
 
 
-  $obj = new Validator; 
+//   $obj = new Validator; 
 
 
-//   $input = "<h1>Root Account</h1>";
+// //   $input = "<h1>Root Account</h1>";
   
-//   echo $obj->Clean($input);
+// //   echo $obj->Clean($input);
 
 
-$email = "test@test.com";
+// $email = "test@test.com";
 
-  var_dump($obj->validate($email,'email'));
+//   var_dump($obj->validate($email,'email'));

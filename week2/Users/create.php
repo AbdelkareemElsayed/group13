@@ -61,7 +61,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         $allowedExtension = ['png', 'jpeg', 'jpg'];   // allowed Extension    // PNG JPG 
 
         if (!in_array($extension, $allowedExtension)) {
-
+    
             $errors['Image'] = "Invalid Extension";
         }
     }
