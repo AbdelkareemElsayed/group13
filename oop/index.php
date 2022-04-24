@@ -324,6 +324,71 @@
  
 //   echo  user :: $name;
 
-echo user :: getName();
+// echo user :: getName();
 
+
+
+#############################################################################################    
+
+
+// class x{
+
+//   public function  message(){
+//     // code ..... 
+//   }
+
+
+
+  
+//   public function  message($age){
+//     // code ..... 
+//   }
+
+
+// }
+
+################################################################################################################ 
+
+// OVERLOADING ...... 
+
+
+// class calcArea{
+
+
+//   function __call($name,$arg){
+
+//       if($name == "Area"){
+
+//         switch (count($arg)) {
+//           case 1:
+//             # code...
+
+//             return (pi()*$arg[0]*$arg[0]); 
+//             break;
+
+//          case 2: 
+//             return ($arg[0]*$arg[1]);   
+//             break;
+//         }
+//      }
+//    }
+
+
+//   }
+
+//  $obj = new calcArea; 
+
+//  echo 'Circle Area = '.$obj->Area(2).'<br>';
+
+//  echo 'Rec Area = '.$obj->Area(2,4);
+
+
+
+// require 'class1.php';
+// require 'class2.php';
+
+
+// $obj = new C2\x; 
+
+// $obj->message();
 ?>
